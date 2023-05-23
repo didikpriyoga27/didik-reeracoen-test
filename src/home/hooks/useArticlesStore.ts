@@ -8,6 +8,9 @@ type ArticlesStore = {
 export type Article = {
   url: string;
   title: string;
+  thumbnail_standard: string;
+  abstract: string;
+  byline: string;
 };
 
 const useArticlesStore = create<ArticlesStore>((set: any) => ({
