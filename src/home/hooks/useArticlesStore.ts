@@ -1,17 +1,5 @@
 import { create } from "zustand";
-
-type ArticlesStore = {
-  articles: Article[];
-  setArticles: (articles: Article[]) => void;
-};
-
-export type Article = {
-  url: string;
-  title: string;
-  thumbnail_standard: string;
-  abstract: string;
-  byline: string;
-};
+import { ArticlesStore } from "../types";
 
 const useArticlesStore = create<ArticlesStore>((set: any) => ({
   articles: [],

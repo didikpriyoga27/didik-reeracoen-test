@@ -1,10 +1,9 @@
 import React, { useCallback } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { FlatList, Image, Text, View } from "native-base";
-import { Article } from "../hooks/useArticlesStore";
 import useGetArticles from "../hooks/useGetArticles";
 import { ActivityIndicator, RefreshControl } from "react-native";
 import ArticleItem from "../components/ArticleItem";
+import { Article } from "../types";
 
 export default function HomeScreen() {
   const { articles, isLoading, refetch, isRefetching } = useGetArticles();
@@ -15,7 +14,7 @@ export default function HomeScreen() {
 
   const ListHeaderComponent = useCallback(() => {
     return (
-      <Text p={4} fontSize={'lg'} fontWeight={"bold"}>
+      <Text p={4} fontSize={"lg"} fontWeight={"bold"}>
         Latest Contents
       </Text>
     );
@@ -26,15 +25,13 @@ export default function HomeScreen() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <FlatList
-        data={articles}
-        renderItem={renderItem}
-        refreshControl={
-          <RefreshControl refreshing={isRefetching} onRefresh={refetch} />
-        }
-        ListHeaderComponent={ListHeaderComponent}
-      />
-    </SafeAreaView>
+    <FlatList
+      data={articles}
+      renderItem={renderItem}
+      refreshControl={
+        <RefreshControl refreshing={isRefetching} onRefresh={refetch} />
+      }
+      ListHeaderComponent={ListHeaderComponent}
+    />
   );
 }
