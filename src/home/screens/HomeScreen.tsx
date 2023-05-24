@@ -1,9 +1,10 @@
 import React, { useCallback } from "react";
 import { FlatList, Image, Text, View } from "native-base";
 import useGetArticles from "../hooks/useGetArticles";
-import { ActivityIndicator, RefreshControl } from "react-native";
+import { RefreshControl } from "react-native";
 import ArticleItem from "../components/ArticleItem";
 import { Article } from "../types";
+import { Spinner } from "native-base";
 
 export default function HomeScreen() {
   const { articles, isLoading, refetch, isRefetching } = useGetArticles();
@@ -21,7 +22,9 @@ export default function HomeScreen() {
   }, []);
 
   if (isLoading) {
-    return <ActivityIndicator size={"large"} />;
+    return (
+      <Spinner size={"large"} justifyContent={"center"} flex={1} />
+    );
   }
 
   return (

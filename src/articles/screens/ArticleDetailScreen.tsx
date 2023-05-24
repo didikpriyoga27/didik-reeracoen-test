@@ -54,7 +54,7 @@ export default function ArticleDetailScreen() {
           {imageMedia?.caption} {`(©: ${imageMedia?.copyright})`}
         </Text>
       </ScrollView>
-      <Button onPress={handleSeeDetails} bottom={bottom + 4} p={4} m={4}>
+      <Button onPress={handleSeeDetails} bottom={bottom} p={4} m={4}>
         <Text color={"white"} fontWeight={"bold"}>
           See Details
         </Text>
